@@ -6,7 +6,8 @@ token = "7766217558:AAHeBy4VY7wnm-oznPl2exc6epWnXnPJ3j4"
 
 bot = telebot.TeleBot(token)
 
-RANDOM_TASKS = {"f", "d", "r", "u", "w"}
+RANDOM_TASKS = ["Поехать в отпуск", "Съесть торт", "Выучить стих", "Убраться в квартире", "Купить продукты"]
+RANDOM_DATES = ["Сегодня", "Завтра", "Вчера"]
 
 HELP = """
 /help - Напечатать справку по программе.
@@ -70,7 +71,8 @@ def add(message):
 
 @bot.message_handler(commands=["random"])
 def random_add(message):
-    date = "Сегодня"
+
+    date = random.choice(RANDOM_DATES)
     task = random.choice(RANDOM_TASKS)
     add_todo(date, task)
     text = "Задача " + task + " добавлена на дату " + date
